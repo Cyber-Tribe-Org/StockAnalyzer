@@ -1,0 +1,18 @@
+
+# Use the official Python image
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Create and set the working directory
+WORKDIR /code
+
+# Install dependencies
+COPY ./project/requirements.txt /code/
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# Copy project files into the container
+COPY ./project/ /code/
